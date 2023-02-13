@@ -11,6 +11,8 @@ image.png<%- include('includes/head'); %>
         <h1 class="text-center">Criar conta ou Entrar</h1>
         <p class="text-center lead">Faça login ou crie sua conta abaixo</p>
 
+        <%- include('includes/messegs'); %>
+
         <div class="row">
         
           <div class="col-lg">
@@ -19,15 +21,15 @@ image.png<%- include('includes/head'); %>
             <p>Se você ainda não tem conta, preencha o formulário abaixo</p>
 
               <form action="/login/register" method="POST">
-                <input type="hidden" name="_csrf" value=<%= csrfToken %>>
+                <input type="hidden" name="_csrf" value= <%= csrfToken %>>
 
                 <div class="form-group">
                   <label >Seu e-mail</label>
-                  <input type="email" class="form-control" name="e-mail" >
+                  <input type="email" class="form-control" name="email" >
                 </div>
                 <div class="form-group">
                   <label >Sua Senha</label>
-                  <input type="passworl" class="form-control" name="passworld" >
+                  <input type="password" class="form-control" name="password" >
                 </div>
                 <button type="Entrar" class="btn btn-primary">Criar conta</button>
               </form>
@@ -43,11 +45,11 @@ image.png<%- include('includes/head'); %>
                 <input type="hidden" name="_csrf" value=<%= csrfToken %>>
                 <div class="form-group">
                   <label >Seu e-mail</label>
-                  <input type="email" class="form-control" name="e-mail" >
+                  <input type="email" class="form-control" name="email" >
                 </div>
                 <div class="form-group">
                   <label >Sua Senha</label>
-                  <input type="passworl" class="form-control" name="passworld" >
+                  <input type="password" class="form-control" name="password" >
                 </div>
                 <button type="submit" class="btn btn-primary">Entrar</button>
               </form>
