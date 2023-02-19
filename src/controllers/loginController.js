@@ -1,5 +1,5 @@
 const session = require('express-session');
-const Login = require('./models/LoginModel')
+const Login = require('../models/LoginModel')
 
 exports.index = (req,res) => {
     if(req.session.user) return res.render('login-logado');
@@ -30,7 +30,6 @@ exports.register = async function (req, res){
    
  
 };
-
 exports.login = async function (req, res){
     try{
         const login = new Login(req.body);

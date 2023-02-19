@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { async } = require('regenerator-runtime');
 const validator = require('validator')
 
 const ContatoSchema = new mongoose.Schema({
@@ -8,17 +9,23 @@ const ContatoSchema = new mongoose.Schema({
     telefone : {type: String, require: false, default:''},
     criadoEm  : {type: Date,default: Date.now},
 
-    descricao: String
 });
 
 const ContatoModel = mongoose.model('Contato', ContatoSchema);
 
 function Contato (body) {
-    this = body = body;
+    this.body = body;
     this.errors = [];
     this.contato = null;
 
 }
+Contato.buscaPorId = async function(id) {
+  if(typeof id !== 'string') return;
+  const contato = await ContatoModel.findById(id);
+  return contato;
+};
+
+
 
 Contato.prototype.register =  async function(){
     this.valida();
@@ -35,7 +42,7 @@ Contato.prototype.valida= function (){
     if (!this.body.email && !validator.isEmail(this.body.email)) this.errors.push('E-mail é inválido');
     if (!this.body.nome) this.errors.push('Nome é um campo obrigatório')
     if (!this.body.email && !this.body.telefone ) { 
-        this.errors.push('Pelo menos u, contato precisa ser enviado: E-mail ou telefone.')
+        this.errors.push('Pelo menos um, contato precisa ser enviado: E-mail ou telefone.')
     }
 };
 
@@ -55,4 +62,10 @@ Contato.prototype.cleanUp= function(){
     };
 }
 
+    Contato.prototype.edit = async function(id){
+    if(typeof id !== 'String') return;
+    this.valida();
+    if(this.errors.length > 0 );
+    this.contato =  await ContatoModel.findOneAndUpdate(id, this.body, {new: true})
+};
 module.exports = Contato;
