@@ -12,35 +12,25 @@ image.png<%- include('includes/head'); %>
         <p class="text-center lead">Seus contatos estão abaixos</p>
 
         <%- include('includes/messegs') %>
-
+        
+        <% if(contatos.length > 0) { %>
           <div class="responsive-table">
             <table class="table my-3">
+              <% contatos.forEach(contato => { %>
               <tr>
-                <td>Luys</td>
-                <td>Fernando</td>
-                <td>94996670764</td>
-                <td>ibiapinofernando@gmail.com</td>
+                <td><%= contato.nome %></td>
+                <td><%= contato.sobrenome %></td>
+                <td><%= contato.telefone %></td>
+                <td><%= contato.email %></td>
+                <td><a href="/contato/index/<%= contato._id %>">Editar</a></td>
+                <td><a class="text-danger" href="/contato/delete/<%= contato._id %>">Excluir</a></td>
               </tr>
-              <tr>
-                <td>Luys</td>
-                <td>Fernando</td>
-                <td>94996670764</td>
-                <td>ibiapinofernando@gmail.com</td>
-              </tr>
-              <tr>
-                <td>Luys</td>
-                <td>Fernando</td>
-                <td>94996670764</td>
-                <td>ibiapinofernando@gmail.com</td>
-              </tr>
-              <tr>
-                <td>Luys</td>
-                <td>Fernando</td>
-                <td>94996670764</td>
-                <td>ibiapinofernando@gmail.com</td>
-              </tr>
+              <% }); %>
             </table>
           </div>
+          <% } else { %>
+            <p class="text-center lead">Não existem contatos na sua agenda.</p>
+          <% } %>
 
       </div>
       
