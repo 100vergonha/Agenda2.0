@@ -52,7 +52,7 @@ app.use(routes);
 
 //PORTA acesso ao servidor!!
 app.on('pronto',()=>{
-  app.listen(3000, () =>{
-      console.log('acessar servidor http://localhost:3000')
+  app.listen(4000, () =>{
+      console.log('acessar servidor http://localhost:4000')
   })
 });

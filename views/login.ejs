@@ -1,68 +1,63 @@
-image.png<%- include('includes/head'); %>
+<%- include('includes/head'); %>
 <%- include('includes/nav'); %>
 
+<div class="container">
+  <div class="row">
+    <div class="col-lg-2"></div>
 
-<div class="container"> 
-    <div class="row">
+    <div class="col-lg-8 my-3">
+      <h1 class="text-center">Bem-vindo a Nossa Comunidade</h1>
+      <p class="text-center lead">Faça login ou crie sua conta abaixo</p>
 
-      <div class="col-lg-2"></div>
+      <%- include('includes/messegs'); %>
 
-      <div class="col-lg-8 my-3">
-        <h1 class="text-center">Criar conta ou Entrar</h1>
-        <p class="text-center lead">Faça login ou crie sua conta abaixo</p>
-
-        <%- include('includes/messegs'); %>
-
-        <div class="row">
-        
-          <div class="col-lg">
-            <h4>Faça seu Cadastro</h4>
-
-            <p>Se você ainda não tem conta, preencha o formulário abaixo</p>
-
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">Crie Sua Conta</h4>
+              <p class="card-text">Junte-se a nós preenchendo o formulário abaixo</p>
               <form action="/login/register" method="POST">
-                <input type="hidden" name="_csrf" value= <%= csrfToken %>>
-
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                 <div class="form-group">
-                  <label >Seu e-mail</label>
-                  <input type="email" class="form-control" name="email" >
+                  <label for="email">Seu E-mail</label>
+                  <input type="email" class="form-control" id="email" name="email">
                 </div>
                 <div class="form-group">
-                  <label >Sua Senha</label>
-                  <input type="password" class="form-control" name="password" >
+                  <label for="password">Sua Senha</label>
+                  <input type="password" class="form-control" id="password" name="password">
                 </div>
-                <button type="Entrar" class="btn btn-primary">Criar conta</button>
+                <button type="submit" class="btn btn-primary">Criar Conta</button>
               </form>
-              
             </div>
-            
-            <div class="col-lg">
-              <h4>Faça seu Login</h4>
+          </div>
+        </div>
 
-              <p>Se você já tem uma conta, faça login abaixo</p>
-
+        <div class="col-lg-6">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">Faça Seu Login</h4>
+              <p class="card-text">Acesse sua conta com seu e-mail e senha</p>
               <form action="/login/login" method="POST">
-                <input type="hidden" name="_csrf" value=<%= csrfToken %>>
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                 <div class="form-group">
-                  <label >Seu e-mail</label>
-                  <input type="email" class="form-control" name="email" >
+                  <label for="loginEmail">Seu E-mail</label>
+                  <input type="email" class="form-control" id="loginEmail" name="email">
                 </div>
                 <div class="form-group">
-                  <label >Sua Senha</label>
-                  <input type="password" class="form-control" name="password" >
+                  <label for="loginPassword">Sua Senha</label>
+                  <input type="password" class="form-control" id="loginPassword" name="password">
                 </div>
                 <button type="submit" class="btn btn-primary">Entrar</button>
               </form>
-            
             </div>
-  
           </div>
         </div>
-        
-  
-        <div class="col-lg-2"></div>
-  
       </div>
-  </div>
-    <%- include('includes/footer'); %>
+    </div>
 
+    <div class="col-lg-2"></div>
+  </div>
+</div>
+
+<%- include('includes/footer'); %>
