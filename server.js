@@ -12,6 +12,10 @@ const {middlewareGlobal, checkCsrfError, csrfMiddleware} = require('./src/middle
 //const helmet = require('helmet');
 const csrf= require('csurf');
 
+const user = process.env.PORT || 5000;
+
+const users = [];
+
 //app.use();
 //app.use(helmet.referrerPolicy({policy:["origin", "unsafe-url"]}));
 app.use(express.urlencoded({ extended:true }));
@@ -52,7 +56,7 @@ app.use(routes);
 
 //PORTA acesso ao servidor!!
 app.on('pronto',()=>{
-  app.listen(4000, () =>{
-      console.log('acessar servidor http://localhost:4000')
+  app.listen(5000, () =>{
+      console.log('acessar servidor http://localhost:5000')
   })
 });
